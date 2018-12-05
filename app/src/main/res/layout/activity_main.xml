@@ -12,29 +12,32 @@
         android:id="@+id/toolbar">
     </include>
 
-<com.astuetz.PagerSlidingTabStrip
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
-    android:elevation="4dp"
-    android:id="@+id/tabstrip"
-    app:pstsIndicstorColor="@color/tabstrip"
-    app:pstsIndicatorHeight="5dp"
-    app:pstsShouldExpand="true"
-    >
-
-</com.astuetz.PagerSlidingTabStrip>
-
-    <android.support.v4.view.ViewPager
+    <android.support.v4.view.PagerTabStrip
+        android:id="@+id/tabStrip"
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1"
-        android:id="@+id/pager"
         android:background="@android:color/white"
-        >
+        android:visibility="visible">
+
+    </android.support.v4.view.PagerTabStrip>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:background="@android:color/white">
 
     </android.support.v4.view.ViewPager>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container"
+    >
+
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/imageView"
