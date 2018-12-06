@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
 
 
-
     private Button button;
 
     @Override
@@ -28,28 +27,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewPager = (ViewPager)findViewById(R.id.pager);
-        tabs = (PagerTabStrip)findViewById(R.id.tabStrip);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        tabs = (PagerTabStrip) findViewById(R.id.tabStrip);
 
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         tabs.setViewPager(viewPager);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        if(toolbar!=null)
-        {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
 
         button = (Button) findViewById(R.id.buttonCreateNew);
-        button. setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewMemory();
+                NewMemory();
             }
         });
 
         button = (Button) findViewById(R.id.buttonAccessDiary);
-        button. setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDiary();
@@ -58,65 +56,69 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId()) //open settings activity
-        {
-            case R.id.settings_id:
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public class MyAdapter extends FragmentPagerAdapter
-    {
-        String [] titles = {"Record","Saved Recordings"};
-        public MyAdapter(FragmentManager fm)
-        {
-            super(fm);
-        }
         @Override
-        public Fragment getItem (int position)
+        public boolean onOptionsItemSelected (MenuItem item)
         {
-            switch(position)
+            switch (item.getItemId()) //open settings activity
             {
-                case 0: return RecordFragment.newInstance(position);
-                case 1: return FileViwerFragment.newInstance(position);
+                case R.id.settings_id:
             }
-            return null;
+            return super.onOptionsItemSelected(item);
         }
 
-        @Override
-        public int getCount()
+        public class MyAdapter extends FragmentPagerAdapter {
+            String[] titles = {"Record", "Saved Recordings"};
+
+            public MyAdapter(FragmentManager fm) {
+                super(fm);
+            }
+
+            @Override
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return RecordFragment.newInstance(position);
+                    case 1:
+                        return FileViwerFragment.newInstance(position);
+                }
+                return null;
+            }
+
+            @Override
+            public int getCount() {
+                return titles.length;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return titles[position];
+            }
+        }
+
+    public MainActivity()
         {
-            return titles.length;
+
         }
 
-        @Override
-        public CharSequence getPageTitle(int position)
-        {
-            return titles[position];
+        public void openNewMemory () {
+            Intent intent = new Intent(this, CreateNewMemory.class);
+            startActivity(intent);
         }
+
+        public void openDiary () {
+            Intent intent = new Intent(this, MemoriesList.class);
+            startActivity(intent);
+        }
+
+
+
     }
 
-    public MainActivity ()
-    {
+    public void deleteMe(){
 
     }
-
-    public void openNewMemory () {
-        Intent intent = new Intent (this, CreateNewMemory.class);
-        startActivity (intent);
-    }
-
-    public void openDiary () {
-        Intent intent = new Intent (this, MemoriesList.class);
-        startActivity(intent);
-    }
-
 }
