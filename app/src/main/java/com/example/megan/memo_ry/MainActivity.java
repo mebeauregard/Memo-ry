@@ -8,13 +8,17 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
     PagerTabStrip tabs;
     ViewPager viewPager;
+
 
 
     private Button button;
@@ -28,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
         tabs = (PagerTabStrip)findViewById(R.id.tabStrip);
 
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        tabs.setViewPager(viewPager);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        if(toolbar!=null)
+        {
+            setSupportActionBar(toolbar);
+        }
 
         button = (Button) findViewById(R.id.buttonCreateNew);
         button. setOnClickListener(new View.OnClickListener() {
@@ -46,9 +57,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId()) //open settings activity
+        {
+            case R.id.settings_id:
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public class MyAdapter extends FragmentPagerAdapter
     {
-        String [] titles = ("Record","Saved Recordings");
+        String [] titles = {"Record","Saved Recordings"};
         public MyAdapter(FragmentManager fm)
         {
             super(fm);
@@ -73,13 +100,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position)
         {
-            return titles(position);
+            return titles[position];
         }
     }
 
     public MainActivity ()
     {
-        
+
     }
 
     public void openNewMemory () {
