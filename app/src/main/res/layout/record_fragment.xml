@@ -11,13 +11,17 @@
         android:id="@+id/imageView4"
         android:layout_width="447dp"
         android:layout_height="596dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.505"
-        app:srcCompat="@drawable/recordscreen"  />
+        app:srcCompat="@drawable/recordscreen" />
 
     <EditText
         android:id="@+id/editText"
@@ -42,17 +46,18 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/indie_flower"
         android:text="Press and hold to record! Tap to Pause!"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/record_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/record_button"/>
+        app:layout_constraintStart_toStartOf="@id/record_button"
+        app:layout_constraintTop_toBottomOf="@+id/chronometer"
+        android:layout_centerHorizontal="true"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/record_button"
@@ -69,45 +74,36 @@
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="64dp"
         android:fontFamily="@font/indie_flower"
         android:textColor="@color/white"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/recordProgressBar"
-        app:layout_constraintEnd_toEndOf="@+id/recordProgressBar"
-        app:layout_constraintStart_toStartOf="@+id/recordProgressBar"
-        app:layout_constraintTop_toTopOf="@+id/recordProgressBar"
+        app:layout_alignBottom_toBottomOf="@+id/recordProgressBar"
+
         />
 
     <ProgressBar
 
         android:id="@+id/recordProgressBar"
         android:layout_width="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="169dp"
         android:background="@drawable/record_progress_bar_bg"
         android:indeterminate="false"
         android:max="100"
         android:progress="0"
-        android:progressDrawable="@drawable/record_progress_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        android:progressDrawable="@drawable/record_progress_bar" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="47dp"
         android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="450dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button4"
         app:layout_constraintBottom_toBottomOf="parent"
